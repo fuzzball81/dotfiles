@@ -1,0 +1,109 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+#if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+#    . /etc/bash_completion
+#fi
+
+if [ -e/etc/profile ]; then
+	source /etc/profile
+fi
+
+HOST_STR="`ip address show dev eno1 | grep inet | grep -v inet6 | awk -F " " '{print $2}' | awk -F "/" '{print $1}'`"
+
+if [ -e $HOME/.git-prompt.sh ]; then
+	source $HOME/.git-prompt.sh
+	export PS1="\n\[$(tput bold)\]\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\h($HOST_STR)\[$(tput setaf 6)\](\d)(\t)\n\[$(tput setaf 1)\][\w]\[$(tput setaf 5)\]\$(__git_ps1)\n\[$(tput setaf 2)\]->\[$(tput sgr0)\]"
+else
+
+	export PS1="\n\[$(tput bold)\]\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\h($HOST_STR)\[$(tput setaf 6)\](\d)(\t)\n\[$(tput setaf 1)\][\w]\[$(tput setaf 5)\]\n\[$(tput setaf 2)\]->\[$(tput sgr0)\]"
+fi
+
+if [ -e $HOME/data/hg_extensions/hg-prompt/prompt.py ]; then
+	hg_ps1() {
+		hg prompt "({branch}:{tags})" 2> /dev/null
+	    }
+
+	export PS1="\n\[$(tput bold)\]\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\h($HOST_STR)\[$(tput setaf 6)\](\d)(\t)\n\[$(tput setaf 1)\][\w]\[$(tput setaf 5)\]\$(__git_ps1)\$(hg_ps1)\n\[$(tput setaf 2)\]->\[$(tput sgr0)\]"
+else
+	export PS1="\n\[$(tput bold)\]\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\h($HOST_STR)\[$(tput setaf 6)\](\d)(\t)\n\[$(tput setaf 1)\][\w]\[$(tput setaf 5)\]\n\[$(tput setaf 2)\]->\[$(tput sgr0)\]"
+fi
+
+export PATH=$PATH:/opt/jdk/bin:~/bin:~/bin/tmuxifier/bin:~/data/bin/beyondcompare/bin:/usr/lib/ccache:/opt/bin:$HOME/data/devel/hg/arm-linux-bsp/nl6-cross-sdk/bin
+
+function gvim() { (/usr/bin/gvim -f "$@" >/dev/null  &) }
+
+#if [ -n "$TMUX" ]; then
+#	export TERM=screen-256color
+#else
+#	export TERM=xterm-256color
+#fi
+
+alias target='screen -t xterm-256color /dev/ttyUSB0 115200,cs8,echo,icrnl,echonl'
+alias target2='screen -t xterm-256color /dev/ttyUSB1 115200,cs8,echo,icrnl,echonl'
+alias uno='screen -t xterm-256color /dev/ttyACM0 9600,cs8,echo,icrnl,echonl'
+alias uptags='rm tags && ctags'
+
+if [ -d /home/jjoyce/data/dotfiles/tmuxifier_configs ]; then
+	eval "$(tmuxifier init -)"
+	export TMUXIFIER_LAYOUT_PATH=/home/jjoyce/data/dotfiles/tmuxifier_configs
+fi
+
+if [ -e /usr/bin/virtualenvwrapper.sh ]; then
+	export WORKON_HOME=$HOME/data/virtualenvs
+	source /usr/bin/virtualenvwrapper.sh
+fi
+
+export PATH=/opt/beyondcompare/bin:$PATH
