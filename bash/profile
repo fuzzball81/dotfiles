@@ -28,6 +28,7 @@ alias ll='ls -l'
 alias ValProxy='ssh -D 7778 -N jjoyce@66.238.172.51'
 alias ValTunnel='ssh -L 7777:argo.nsbloomfield.com:22 jjoyce@66.238.172.51'
 alias WorkMachine='ssh -X -p 7777 jjoyce@localhost'
+alias MSSqlRDP='ssh -L 3389:10.10.10.79:3389 jjoyce@66.238.172.51'
 
 alias target='screen -t xterm-256color /dev/ttyUSB0 115200,cs8,echo,icrnl,echonl'
 alias target2='screen -t xterm-256color /dev/ttyUSB1 115200,cs8,echo,icrnl,echonl'
@@ -36,6 +37,13 @@ export PATH=/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:~/Appl
 # Finished adapting your PATH environment variable for use with MacPorts.
 source `brew --repository`/Library/Contributions/brew_bash_completion.sh
 
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+	    . `brew --prefix`/etc/bash_completion
+    fi
+
 if [ -e /usr/local/Cellar/tmux/1.8/etc/bash_completion.d/tmux ]; then
 	source /usr/local/Cellar/tmux/1.8/etc/bash_completion.d/tmux
 fi
+export WORKON_HOME=$HOME/virtual_envs
+export PROJECT_HOME=$HOME/Code_Projects/python
+source /usr/local/bin/virtualenvwrapper.sh
