@@ -1,0 +1,50 @@
+[ui]
+username = jjoyce
+editor = vim
+merge = bcomp
+
+[alias]
+latest = log --limit 5
+srb = rebase --svn
+stash = shelve
+
+[diff]
+git = True
+showfunc = True
+unified = 3
+nodates = True
+
+[extensions]
+hgsubversion = /home/jjoyce/hg_extensions/hgsubversion/hgsubversion
+prompt = /home/jjoyce/hg_extensions/hg-prompt/prompt.py
+color =
+histedit =
+rebase =
+pager =
+record =
+shelve =
+mq =
+strip =
+
+[merge-tools]
+bcomp.executable = /home/jjoyce/data/bin/beyondcompare/bin/bcompare
+bcomp.args = $local $other $base $output
+bcomp.priority = 1
+bcomp.premerge = True
+bcomp.gui = True
+
+[hooks]
+update.externs = hg svn updateexternals
+# Prevent "hg pull" if MQ patches are applied.
+pre-pull = /home/jjoyce/scripts/shell/mq_applied_check.sh
+# Prevent "hg push" if MQ patches are applied.
+pre-push = /home/jjoyce/scripts/shell/mq_applied_check.sh
+# Prevent "hg update" if MQ patches are applied.
+preupdate.mq-no-update = /home/jjoyce/scripts/shell/mq_applied_check.sh
+
+[pager]
+pager = LESS='FRX' less
+attend = annotate, cat, diff, export, glog, log, qdiff
+
+[mq]
+secret = True
