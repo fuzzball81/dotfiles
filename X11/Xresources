@@ -1,0 +1,94 @@
+! font settings --------------------------------------------------------------
+
+! Xft.antialias: true
+! Xft.hinting: full
+! Xft.dpi: 96
+! Xft.rgba: rgb
+
+! xscreensaver ---------------------------------------------------------------
+
+!font settings
+xscreensaver.Dialog.headingFont:        -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
+xscreensaver.Dialog.bodyFont:           -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
+xscreensaver.Dialog.labelFont:          -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
+xscreensaver.Dialog.unameFont:          -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
+xscreensaver.Dialog.buttonFont:         -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
+xscreensaver.Dialog.dateFont:           -*-fixed-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.passwd.passwdFont:         -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
+!general dialog box (affects main hostname, username, password text)
+xscreensaver.Dialog.foreground:         #101010
+xscreensaver.Dialog.background:         #D8D8D8
+xscreensaver.Dialog.topShadowColor:     #D8D8D8
+xscreensaver.Dialog.bottomShadowColor:  #D8D8D8
+xscreensaver.Dialog.Button.foreground:  #101010
+xscreensaver.Dialog.Button.background:  #E5E5E5
+!username/password input box and date text colour
+xscreensaver.Dialog.text.foreground:    #101010
+xscreensaver.Dialog.text.background:    #E5E5E5
+xscreensaver.Dialog.internalBorderWidth:24
+xscreensaver.Dialog.borderWidth:        0
+xscreensaver.Dialog.shadowThickness:    2
+!timeout bar (background is actually determined by Dialog.text.background)
+xscreensaver.passwd.thermometer.foreground:  #101010
+xscreensaver.passwd.thermometer.background:  #2E2E2E
+xscreensaver.passwd.thermometer.width:       8
+
+urxvt*termName: rxvt-unicode-256color
+urxvt.perl-lib: /home/jjoyce/urxvt-perls
+urxvt.perl-ext-common: clipboard,url-select
+
+urxvt.keysym.M-c:   perl:clipboard:copy
+urxvt.keysym.M-v:   perl:clipboard:paste
+urxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+urxvt.keysym.M-u: perl:url-select:select_next
+
+urxvt.clipboard.copycmd:  xsel -ib
+urxvt.clipboard.pastecmd: xsel -ob
+
+urxvt.url-select.underline: true
+urxvt.url-select.button: 2
+urxvt.url-select.launcher: /usr/bin/firefox
+
+urxvt.iconFile: /usr/share/icons/HighContrast/scalable/apps/utilities-terminal.svg
+!urxvt.font: xft:Terminus:regular:size=11,xft:Liberation Mono for Powerline:size=11
+!urxvt*font: xft:OpenDyslexicMono:size=9,xft:PowerlineSymbols:size=9
+urxvt*font: xft:Liberation Mono for Powerline:regular:size=10
+!urxvt*font: xft:Inconsolata for Powerline:medium:size=11
+urxvt*depth: 32
+urxvt*transparent: true
+urxvt*shading: 15
+urxvt*cursorBlink: true
+! Set the style of the scrollbar: rxvt (default), plain, next, xterm
+urxvt.scrollstyle: rxvt
+! To disable the scrollbar
+urxvt.scrollBar: false
+
+!Default Theme
+urxvt.background: #000000
+urxvt.foreground: #FFFFFF
+
+!black
+urxvt.color0: #000000
+urxvt.color8: #555555
+!red
+urxvt.color1: #AA0000
+urxvt.color9: #FF5555
+!green
+urxvt.color2: #00AA00
+urxvt.color10: #55FF55
+!yellow
+urxvt.color3: #AA5500
+urxvt.color11: #FFFF55
+!blue
+urxvt.color4: #0000AA
+urxvt.color12: #5555FF
+!magenta
+urxvt.color5: #AA00AA
+urxvt.color13: #FF55FF
+!cyan
+urxvt.color6: #00AAAA
+urxvt.color14: #55FFFF
+!white
+urxvt.color7: #AAAAAA
+urxvt.color15: #FFFFFF
+
