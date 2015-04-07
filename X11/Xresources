@@ -50,10 +50,9 @@ urxvt.url-select.button: 2
 urxvt.url-select.launcher: /usr/bin/firefox
 
 urxvt.iconFile: /usr/share/icons/HighContrast/scalable/apps/utilities-terminal.svg
-!urxvt.font: xft:Terminus:regular:size=11,xft:Liberation Mono for Powerline:size=11
 !urxvt*font: xft:OpenDyslexicMono:size=9,xft:PowerlineSymbols:size=9
 urxvt*font: xft:Liberation Mono for Powerline:regular:size=10
-!urxvt*font: xft:Inconsolata for Powerline:medium:size=11
+!urxvt*font: xft:Inconsolata for Powerline:medium:size=10
 urxvt*depth: 32
 urxvt*transparent: true
 urxvt*shading: 15
