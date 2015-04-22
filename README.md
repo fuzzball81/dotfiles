@@ -1,4 +1,4 @@
-This is my ~/dotfiles directoru:
+This is my ~/dotfiles directory:
 
 Installation
 ============
