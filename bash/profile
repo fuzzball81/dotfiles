@@ -32,6 +32,7 @@ alias MSSqlRDP='ssh -L 3389:10.10.10.79:3389 jjoyce@66.238.172.51'
 
 alias target='screen -t xterm-256color /dev/ttyUSB0 115200,cs8,echo,icrnl,echonl'
 alias target2='screen -t xterm-256color /dev/ttyUSB1 115200,cs8,echo,icrnl,echonl'
+alias ocean_proxy='ssh -D 8080 -N jjoyce@104.236.71.192'
 
 export PATH=/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:~/Applications/sbin:$PATH
 # Finished adapting your PATH environment variable for use with MacPorts.
