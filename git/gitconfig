@@ -1,0 +1,20 @@
+[user]
+	name = Jason Joyce
+	email = fuzzball81@gmail.com
+
+[color]
+	ui = true
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore_global
+[alias]
+	st = status
+	ci = commit
+	br = branch
+	co = checkout
+	df = diff
+	lg = log -p
+	who = shortlog -s --
+
+[push]
+	default = simple
