@@ -63,12 +63,10 @@ fi
 
 HOST_STR="`ip address show dev eth0 | grep inet | grep -v inet6 | awk -F " " '{print $2}' | awk -F "/" '{print $1}'`"
 
+PS1="\n\[$(tput bold)\]\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\h($HOST_STR)\[$(tput setaf 6)\](\d)(\t)\n\[$(tput setaf 1)\][\w]\[$(tput setaf 5)\]"
 if [ -e $HOME/.git-prompt.sh ]; then
 	source $HOME/.git-prompt.sh
-	export PS1="\n\[$(tput bold)\]\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\h($HOST_STR)\[$(tput setaf 6)\](\d)(\t)\n\[$(tput setaf 1)\][\w]\[$(tput setaf 5)\]\$(__git_ps1)\n\[$(tput setaf 2)\]->\[$(tput sgr0)\]"
-else
-
-	export PS1="\n\[$(tput bold)\]\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\h($HOST_STR)\[$(tput setaf 6)\](\d)(\t)\n\[$(tput setaf 1)\][\w]\[$(tput setaf 5)\]\n\[$(tput setaf 2)\]->\[$(tput sgr0)\]"
+	PS1="$PS1\$(__git_ps1)"
 fi
 
 if [ -e $HOME/data/hg_extensions/hg-prompt/prompt.py ]; then
@@ -76,12 +74,14 @@ if [ -e $HOME/data/hg_extensions/hg-prompt/prompt.py ]; then
 		hg prompt "({branch}:{tags})" 2> /dev/null
 	    }
 
-	export PS1="\n\[$(tput bold)\]\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\h($HOST_STR)\[$(tput setaf 6)\](\d)(\t)\n\[$(tput setaf 1)\][\w]\[$(tput setaf 5)\]\$(__git_ps1)\$(hg_ps1)\n\[$(tput setaf 2)\]->\[$(tput sgr0)\]"
-else
-	export PS1="\n\[$(tput bold)\]\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\h($HOST_STR)\[$(tput setaf 6)\](\d)(\t)\n\[$(tput setaf 1)\][\w]\[$(tput setaf 5)\]\n\[$(tput setaf 2)\]->\[$(tput sgr0)\]"
+	export PS1="$PS1\$(hg_ps1)"
 fi
 
-export PATH=$PATH:/opt/jdk/bin:~/bin:~/bin/tmuxifier/bin:~/data/bin/beyondcompare/bin:/usr/lib/ccache:/opt/bin:$HOME/data/devel/hg/arm-linux-bsp/nl6-cross-sdk/bin
+PS1="$PS1\n\[$(tput setaf 2)\]->\[$(tput sgr0)\]"
+export PS1
+
+
+export PATH=$PATH:~/bin:~/bin/tmuxifier/bin:/usr/lib/ccache:/opt/bin
 
 #if [ -n "$TMUX" ]; then
 #	export TERM=screen-256color
