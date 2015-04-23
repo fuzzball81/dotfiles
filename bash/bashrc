@@ -61,7 +61,7 @@ if [ -e/etc/profile ]; then
 	source /etc/profile
 fi
 
-HOST_STR="`ip address show dev eno1 | grep inet | grep -v inet6 | awk -F " " '{print $2}' | awk -F "/" '{print $1}'`"
+HOST_STR="`ip address show dev eth0 | grep inet | grep -v inet6 | awk -F " " '{print $2}' | awk -F "/" '{print $1}'`"
 
 if [ -e $HOME/.git-prompt.sh ]; then
 	source $HOME/.git-prompt.sh
@@ -83,8 +83,6 @@ fi
 
 export PATH=$PATH:/opt/jdk/bin:~/bin:~/bin/tmuxifier/bin:~/data/bin/beyondcompare/bin:/usr/lib/ccache:/opt/bin:$HOME/data/devel/hg/arm-linux-bsp/nl6-cross-sdk/bin
 
-function gvim() { (/usr/bin/gvim -f "$@" >/dev/null  &) }
-
 #if [ -n "$TMUX" ]; then
 #	export TERM=screen-256color
 #else
@@ -101,9 +99,7 @@ if [ -d /home/jjoyce/data/dotfiles/tmuxifier_configs ]; then
 	export TMUXIFIER_LAYOUT_PATH=/home/jjoyce/data/dotfiles/tmuxifier_configs
 fi
 
-if [ -e /usr/bin/virtualenvwrapper.sh ]; then
-	export WORKON_HOME=$HOME/data/virtualenvs
-	source /usr/bin/virtualenvwrapper.sh
+if [ -e /usr/local/bin/virtualenvwrapper.sh ]; then
+	export WORKON_HOME=$HOME/virtualenvs
+	source /usr/local/bin/virtualenvwrapper.sh
 fi
-
-export PATH=/opt/beyondcompare/bin:$PATH
