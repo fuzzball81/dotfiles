@@ -14,8 +14,8 @@ unified = 3
 nodates = True
 
 [extensions]
-hgsubversion = /home/jjoyce/hg_extensions/hgsubversion/hgsubversion
-prompt = /home/jjoyce/hg_extensions/hg-prompt/prompt.py
+hgsubversion = ~/.hg_extensions/hgsubversion/hgsubversion
+prompt = ~/.hg_extensions/hg-prompt/prompt.py
 color =
 histedit =
 rebase =
@@ -28,11 +28,11 @@ strip =
 [hooks]
 update.externs = hg svn updateexternals
 # Prevent "hg pull" if MQ patches are applied.
-pre-pull = /home/jjoyce/scripts/shell/mq_applied_check.sh
+pre-pull = ~/.hg_scripts/mq_applied_check.sh
 # Prevent "hg push" if MQ patches are applied.
-pre-push = /home/jjoyce/scripts/shell/mq_applied_check.sh
+pre-push = ~/.hg_scripts/mq_applied_check.sh
 # Prevent "hg update" if MQ patches are applied.
-preupdate.mq-no-update = /home/jjoyce/scripts/shell/mq_applied_check.sh
+preupdate.mq-no-update = ~/.hg_scripts/mq_applied_check.sh
 
 [pager]
 pager = LESS='FRX' less
