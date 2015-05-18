@@ -1,3 +1,11 @@
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+if [ -e/etc/profile ]; then
+	source /etc/profile
+fi
+
 # Tell ls to be colourful
 export CLICOLOR=1
 export LSCOLORS=Exfxcxdxbxegedabagacad
@@ -22,12 +30,6 @@ if [ -e $HOME/utils/hg_extensions/hg-prompt/prompt.py ]; then
 else
 	export PS1="\n\[$(tput bold)\]\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\h($HOST_STR)\[$(tput setaf 6)\](\d)(\t)\n\[$(tput setaf 1)\][\w]\[$(tput setaf 5)\]\n\[$(tput setaf 2)\]->\[$(tput sgr0)\]"
 fi
-
-alias e='exit'
-alias ll='ls -l'
-alias target='screen -t xterm-256color /dev/ttyUSB0 115200,cs8,echo,icrnl,echonl'
-alias target2='screen -t xterm-256color /dev/ttyUSB1 115200,cs8,echo,icrnl,echonl'
-alias ocean_proxy='ssh -D 8080 -N jjoyce@104.236.71.192'
 
 export PATH=/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:~/Applications/sbin:$PATH
 # Finished adapting your PATH environment variable for use with MacPorts.
