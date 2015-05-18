@@ -1,7 +1,6 @@
 [ui]
 username = jjoyce
 editor = vim
-merge = bcomp
 
 [alias]
 latest = log --limit 5
@@ -25,13 +24,6 @@ record =
 shelve =
 mq =
 strip =
-
-[merge-tools]
-bcomp.executable = /home/jjoyce/data/bin/beyondcompare/bin/bcompare
-bcomp.args = $local $other $base $output
-bcomp.priority = 1
-bcomp.premerge = True
-bcomp.gui = True
 
 [hooks]
 update.externs = hg svn updateexternals
