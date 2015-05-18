@@ -25,11 +25,6 @@ fi
 
 alias e='exit'
 alias ll='ls -l'
-alias ValProxy='ssh -D 7778 -N jjoyce@66.238.172.51'
-alias ValTunnel='ssh -L 7777:argo.nsbloomfield.com:22 jjoyce@66.238.172.51'
-alias WorkMachine='ssh -X -p 7777 jjoyce@localhost'
-alias MSSqlRDP='ssh -L 3389:10.10.10.79:3389 jjoyce@66.238.172.51'
-
 alias target='screen -t xterm-256color /dev/ttyUSB0 115200,cs8,echo,icrnl,echonl'
 alias target2='screen -t xterm-256color /dev/ttyUSB1 115200,cs8,echo,icrnl,echonl'
 alias ocean_proxy='ssh -D 8080 -N jjoyce@104.236.71.192'
