@@ -46,6 +46,7 @@ fi
 HOST_STR="`ip address show dev eth0 | grep inet | grep -v inet6 | awk -F " " '{print $2}' | awk -F "/" '{print $1}'`"
 
 PS1="\n\[$(tput bold)\]\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\h($HOST_STR)\[$(tput setaf 6)\](\d)(\t)\n\[$(tput setaf 1)\][\w]\[$(tput setaf 5)\]"
+
 if [ -e $HOME/.git-prompt.sh ]; then
 	source $HOME/.git-prompt.sh
 	PS1="$PS1\$(__git_ps1)"
