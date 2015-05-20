@@ -17,7 +17,7 @@ HOST_STR=""
 for interface in en0 en1 en2
 do
 	temp="`ipconfig getifaddr ${interface}`"
-	if [ ${temp} != "" ]
+	if [ "$temp" != "" ]
 	then
 		HOST_STR="${temp}"
 		break
