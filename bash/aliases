@@ -11,4 +11,4 @@ alias target2='screen -t xterm-256color /dev/ttyUSB1 115200,cs8,echo,icrnl,echon
 alias uno='screen -t xterm-256color /dev/ttyACM0 9600,cs8,echo,icrnl,echonl'
 alias uptags='rm tags && ctags'
 alias ocean_proxy='ssh -D 8080 -N jjoyce@104.236.71.192'
-
+alias ocean_login='ssh jjoyce@104.236.71.192'
