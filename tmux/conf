@@ -16,8 +16,8 @@ set -g prefix C-a
 bind-key a send-prefix
 
 # force a reload of the config file
-unbind r
-bind r source-file ~/.tmux.conf
+unbind R
+bind R source-file ~/.tmux.conf \; display-message "Config reloaded..."
 
 # quick pane cycling
 unbind ^A
@@ -38,7 +38,7 @@ set -g visual-activity on
 set -g status-bg colour234
 set -g status-fg white
 set -g status-left "#[fg=green]#S"
-set -g status-right "#[fg=yellow]\"#H\" #[fg=blue]%D #[fg=green]%I:%M %p"
+set -g status-right "#[fg=yellow]\"#h\" #[fg=blue]%D #[fg=green]%I:%M %p"
 
 # Highlight active window
 set-window-option -g window-status-current-bg red
