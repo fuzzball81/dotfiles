@@ -40,14 +40,14 @@ text_buffer_size 2048
 
 TEXT
 ${color orange}Weather ${hr 2}$color
-Macomb Twp. $alignr ${execi 600 /home/jjoyce/.conky-scripts/shell/weather.sh 48042}
-Bloomfield Hills $alignr ${execi 600 /home/jjoyce/.conky-scripts/shell/weather.sh 48304}
+Macomb Twp. $alignr ${execi 600 /home/jjoyce/.conky-scripts/weather.sh 48042}
+Bloomfield Hills $alignr ${execi 600 /home/jjoyce/.conky-scripts/weather.sh 48304}
 
 ${color orange}System ${hr 2}$color
 Kernel: $kernel
 Uptime: $uptime
 Load: $loadavg
-# Volume: ${execi 1 /home/jjoyce/.conky-scripts/shell/volume.sh}
+# Volume: ${execi 1 /home/jjoyce/.conky-scripts/volume.sh}
 
 CPU Average
 ${cpugraph cpu0}
@@ -68,7 +68,7 @@ ${color red}${swapbar 6}$color
 
 ${color orange}HD I/O ${hr 2}$color
 Disk ${goto 80} Read ${goto 150} Write
-${execpi  1 /home/jjoyce/.conky-scripts/python/disk_conky.py}
+${execpi  1 /home/jjoyce/.conky-scripts/disk_conky.py}
 
 Overall I/0 Graph
 ${diskiograph}
