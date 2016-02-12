@@ -17,6 +17,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'bling/vim-airline'
+Plugin 'sickill/vim-monokai'
 call vundle#end() 
 
 filetype plugin indent on
