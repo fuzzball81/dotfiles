@@ -80,4 +80,13 @@
 			<name>.git-prompt.sh</name>
 		</destination>
 	</item>
-</config>
+	<item>
+		<source>
+			<directory>tmux</directory>
+			<name>conf</name>
+		</source>
+		<destination>
+			<directory>$HOME</directory>
+			<name>.tmux.conf</name>
+		</destination>
+	</item></config>
