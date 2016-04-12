@@ -66,6 +66,9 @@ func! TrimWhiteSpace()
   ''
 :endfunction
 
+" search for tags
+set tags=./tags;
+
 set backspace=indent,eol,start
 set cin
 set ai
