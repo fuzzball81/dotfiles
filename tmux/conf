@@ -19,6 +19,9 @@ bind-key a send-prefix
 unbind R
 bind R source-file ~/.tmux.conf \; display-message "Config reloaded..."
 
+# history limit
+set-option -g history-limit 10000
+
 # quick pane cycling
 unbind ^A
 bind ^A select-pane -t :.+
