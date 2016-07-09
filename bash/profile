@@ -44,7 +44,6 @@ export PS1
 
 export PATH=/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:~/Applications/sbin:$PATH
 # Finished adapting your PATH environment variable for use with MacPorts.
-source `brew --repository`/Library/Contributions/brew_bash_completion.sh
 
 if [ -f `brew --prefix`/etc/bash_completion ]; then
 	    . `brew --prefix`/etc/bash_completion
@@ -56,3 +55,5 @@ fi
 export WORKON_HOME=$HOME/virtual_envs
 export PROJECT_HOME=$HOME/Code_Projects/python
 source /usr/local/bin/virtualenvwrapper.sh
+
+alias xfwd='socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\" &'
