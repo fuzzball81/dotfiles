@@ -1,35 +1,49 @@
 function fish_prompt --description 'Write out the prompt'
 
 	# Just calculate these once, to save a few cycles when displaying the prompt
-	if not set -q __fish_prompt_hostname
-		set -g __fish_prompt_hostname (hostname|cut -d . -f 1)
-	end
-
 	if not set -q __fish_prompt_normal
+		set -g __fish_prompt_cyan (set_color -o cyan)
+		set -g __fish_prompt_yellow (set_color -o yellow)
+		set -g __fish_prompt_magenta (set_color -o magenta)
+		set -g __fish_prompt_red (set_color -o red)
+		set -g __fish_prompt_blue (set_color -o blue)
 		set -g __fish_prompt_normal (set_color normal)
 	end
 
-	switch $USER
-
-		case root
-
-		if not set -q __fish_prompt_cwd
-			if set -q fish_color_cwd_root
-				set -g __fish_prompt_cwd (set_color $fish_color_cwd_root)
-			else
-				set -g __fish_prompt_cwd (set_color $fish_color_cwd)
-			end
-		end
-
-		case '*'
-
-		if not set -q __fish_prompt_cwd
-			set -g __fish_prompt_cwd (set_color $fish_color_cwd)
-		end
+	if not set -q __fish_prompt_user
+		set -g __fish_prompt_user $__fish_prompt_yellow"$USER"
+	end
+	if not set -q __fish_prompt_host
+		set -g __fish_prompt_host $__fish_prompt_normal"@"(hostname|cut -d . -f 1)
 	end
 
-	vc_prompt
+	if not set -q __fish_prompt_third
+		set __prompt $__fish_prompt_normal"-> "
+		set -g __fish_prompt_third "$__prompt"
+	end
 
-	echo -n -s -e "\n$USER" @ "$__fish_prompt_hostname\n$__fish_prompt_cwd" (prompt_pwd) "$__fish_prompt_normal $__vc_prompt\n> "
+	switch $USER
+		case root
 
+			if not set -q __fish_prompt_cwd
+				if set -q fish_color_cwd_root
+					set -g __fish_prompt_cwd (set_color $fish_color_cwd_root)
+				else
+					set -g __fish_prompt_cwd (set_color -o red)
+				end
+			end
+
+		case '*'
+			set __time $__fish_prompt_cyan(date +"(%a %b %d)(%H:%M:%S)")
+			set __fish_prompt_first "$__fish_prompt_user$__fish_prompt_host$__time"
+
+			set __pwd $__fish_prompt_red"["(prompt_pwd)"]"
+			set __vcs $__fish_prompt_magenta(__fish_vcs_prompt)
+			set __fish_prompt_second "$__pwd$__vcs"
+
+			echo ""
+			echo $__fish_prompt_first
+			echo $__fish_prompt_second
+			echo -n $__fish_prompt_third
+	end
 end
