@@ -22,6 +22,10 @@ function fish_prompt --description 'Write out the prompt'
 		set -g __fish_prompt_third "$__prompt"
 	end
 
+	if not set -q __fish_prompt_ip
+		set -g __fish_prompt_ip (get_ip_addr)
+	end
+
 	switch $USER
 		case root
 
@@ -35,7 +39,7 @@ function fish_prompt --description 'Write out the prompt'
 
 		case '*'
 			set __time $__fish_prompt_cyan(date +"(%a %b %d)(%H:%M:%S)")
-			set __fish_prompt_first "$__fish_prompt_user$__fish_prompt_host$__time"
+			set __fish_prompt_first "$__fish_prompt_user$__fish_prompt_host($__fish_prompt_ip)$__time"
 
 			set __pwd $__fish_prompt_red"["(prompt_pwd)"]"
 			set __vcs $__fish_prompt_magenta(__fish_vcs_prompt)
