@@ -20,6 +20,7 @@ Plugin 'bling/vim-airline'
 Plugin 'sickill/vim-monokai'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'tpope/vim-fugitive'
+Plugin 'pearofducks/ansible-vim'
 call vundle#end()
 
 filetype plugin indent on
@@ -122,6 +123,12 @@ let g:syntastic_cpp_compiler = 'g++'
 "Jedi Stuff
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_on_dot = 0
+
+"Ansible syntax plugin
+let g:ansible_attribute_highlight = "ob"
+let g:ansible_name_highlight = 'b'
+let g:ansible_extra_keywords_highlight = 1
+
 
 " Supertab Setup
 autocmd FileType *
