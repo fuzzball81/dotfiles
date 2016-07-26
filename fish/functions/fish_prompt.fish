@@ -7,6 +7,7 @@ function fish_prompt --description 'Write out the prompt'
 		set -g __fish_prompt_magenta (set_color -o magenta)
 		set -g __fish_prompt_red (set_color -o red)
 		set -g __fish_prompt_blue (set_color -o blue)
+		set -g __fish_prompt_green (set_color -o green)
 		set -g __fish_prompt_normal (set_color normal)
 	end
 
@@ -14,7 +15,7 @@ function fish_prompt --description 'Write out the prompt'
 		set -g __fish_prompt_user $__fish_prompt_yellow"$USER"
 	end
 	if not set -q __fish_prompt_host
-		set -g __fish_prompt_host $__fish_prompt_normal"@"(hostname|cut -d . -f 1)
+		set -g __fish_prompt_host "$__fish_prompt_green@"(hostname|cut -d . -f 1)
 	end
 
 	if not set -q __fish_prompt_third
