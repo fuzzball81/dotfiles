@@ -19,7 +19,7 @@ function fish_prompt --description 'Write out the prompt'
 	end
 
 	if not set -q __fish_prompt_third
-		set __prompt $__fish_prompt_normal"-> "
+		set __prompt $__fish_prompt_green"-> "
 		set -g __fish_prompt_third "$__prompt"
 	end
 
