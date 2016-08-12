@@ -15,8 +15,13 @@
 	df = diff
 	lg = log -p
 	who = shortlog -s --
+	pr = pull --rebase
 
 [push]
 	default = simple
 [gitreview]
 	username = fuzzball81
+[merge]
+	tool = bc3
+[mergetool "bc3"]
+	trustExitCode = true
