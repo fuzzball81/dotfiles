@@ -34,10 +34,11 @@ setw -g monitor-activity on
 set -g visual-activity on
 
 # Status line
-set -g status-bg colour234
-set -g status-fg white
-set -g status-left "#[fg=green]#S"
-set -g status-right "#[fg=yellow]\"#h\" #[fg=red]%D #[fg=green]%I:%M %p"
+source "/usr/share/tmux/powerline.conf"
+# set -g status-bg colour234
+# set -g status-fg white
+# set -g status-left "#[fg=green]#S"
+# set -g status-right "#[fg=yellow]\"#h\" #[fg=red]%D #[fg=green]%I:%M %p"
 
 # Highlight active window
 set-window-option -g window-status-current-bg red
