@@ -89,7 +89,7 @@ set completeopt=menuone,menu,longest
 set wildmode=longest:full
 set wildmenu
 
-autocmd! BufWritePost * Neomake
+autocmd! BufWritePost,BufEnter * Neomake
 let g:neomake_python_enabled_makers = ['flake8']
 
 let g:syntastic_python_checkers=['flake8']
