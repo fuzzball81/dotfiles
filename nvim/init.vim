@@ -91,11 +91,12 @@ set wildmenu
 
 autocmd! BufWritePost,BufEnter * Neomake
 let g:neomake_python_enabled_makers = ['flake8']
-
-let g:syntastic_python_checkers=['flake8']
 " Disable E501(over 79 chars), W191(tabs instead of space), W391(blank line at
 " end of file, E126(indent over 4 spaces)
-let g:syntastic_python_flake8_args='--ignore=E501,W391'
+let g:neomake_python_flake8_maker = {'args' : ['--ignore=E501']}
+
+let g:syntastic_python_checkers=['flake8']
+let g:syntastic_python_flake8_args='--ignore=E501'
 
 let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs = 1
