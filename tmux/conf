@@ -1,5 +1,4 @@
 set -g status on
-# set -g default-terminal "xterm-256color"
 set-option -ga terminal-overrides ",xterm-256color:Tc"
 
 # instructs tmux to expect UTF-8 sequences
@@ -35,7 +34,9 @@ setw -g monitor-activity on
 set -g visual-activity on
 
 # Status line
-source "/usr/share/tmux/powerline.conf"
+run-shell "powerline-daemon -q"
+source '/Users/Jason/Library/Python/2.7/lib/python/site-packages/powerline/bindings/tmux/powerline.conf'
+# source "/usr/share/tmux/powerline.conf"
 # set -g status-bg colour234
 # set -g status-fg white
 # set -g status-left "#[fg=green]#S"
