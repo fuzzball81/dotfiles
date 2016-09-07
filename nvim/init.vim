@@ -14,6 +14,7 @@ Plug 'vim-scripts/OmniCppComplete'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'pearofducks/ansible-vim', { 'for': 'yaml' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'Glench/Vim-Jinja2-Syntax'
 call plug#end()
 
 filetype plugin indent on
