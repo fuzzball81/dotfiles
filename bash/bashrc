@@ -16,7 +16,7 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-export EDITOR=vim
+export EDITOR=nvim
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -44,9 +44,9 @@ if [ -e/etc/profile ]; then
 	source /etc/profile
 fi
 
-HOST_STR="`ip address show dev eth0 | grep inet | grep -v inet6 | awk -F " " '{print $2}' | awk -F "/" '{print $1}'`"
+HOST_STR="`ip address show dev tun0 | grep inet | grep -v inet6 | awk -F " " '{print $2}' | awk -F "/" '{print $1}'`"
 
-PS1="\n\[$(tput bold)\]\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\h($HOST_STR)\[$(tput setaf 6)\](\d)(\t)\n\[$(tput setaf 1)\][\w]\[$(tput setaf 5)\]"
+PS1="\n\[\033[0;33m\]\u\[\033[0;32m\]@\h($HOST_STR)\[\033[0;34m\](\d)(\t)\n\[\033[0;31m\][\w]\[\033[0m\]"
 
 if [ -e $HOME/.git-prompt.sh ]; then
 	source $HOME/.git-prompt.sh
@@ -61,7 +61,7 @@ if [ -e $HOME/data/hg_extensions/hg-prompt/prompt.py ]; then
 	PS1="$PS1\$(hg_ps1)"
 fi
 
-PS1="$PS1\n\[$(tput setaf 2)\]->\[$(tput sgr0)\]"
+PS1="$PS1\n\[\033[0;32m\]->\[\033[0m\]"
 export PS1
 
 export PATH=$PATH:~/bin:~/bin/tmuxifier/bin:/usr/lib/ccache:/opt/bin
