@@ -35,6 +35,7 @@ setw -g monitor-activity on
 set -g visual-activity on
 
 # Status line
+run-shell "powerline-daemon -q"
 source "/usr/share/tmux/powerline.conf"
 # set -g status-bg colour234
 # set -g status-fg white
