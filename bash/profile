@@ -52,7 +52,7 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
 if [ -e /usr/local/Cellar/tmux/1.8/etc/bash_completion.d/tmux ]; then
 	source /usr/local/Cellar/tmux/1.8/etc/bash_completion.d/tmux
 fi
-export WORKON_HOME=$HOME/virtual_envs
+export WORKON_HOME=$HOME/virtualenvs
 export PROJECT_HOME=$HOME/Code_Projects/python
 source /usr/local/bin/virtualenvwrapper.sh
 
