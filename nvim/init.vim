@@ -1,8 +1,8 @@
 call plug#begin()
 Plug 'flazz/vim-colorschemes'
 Plug 'altercation/solarized'
-Plug 'sickill/vim-monokai'
-Plug 'tomasr/molokai'
+"Plug 'sickill/vim-monokai'
+"Plug 'tomasr/molokai'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 "Plug 'scrooloose/syntastic'
@@ -11,12 +11,19 @@ Plug 'neomake/neomake'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'ervandew/supertab'
 Plug 'vim-scripts/OmniCppComplete'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'pearofducks/ansible-vim', { 'for': 'yaml' }
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
+" Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'zchee/deoplete-jedi'
 call plug#end()
 
 filetype plugin indent on
+
+let g:python_host_prog = $HOME.'/virtualenvs/neovim2/bin/python'
+let g:python3_host_prog = $HOME.'/virtualenvs/neovim3/bin/python'
+
+call deoplete#enable()
 
 " set number
 let c_space_errors = 1
