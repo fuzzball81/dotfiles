@@ -1,0 +1,16 @@
+---
+
+# talk to all hosts just so we can learn about them
+- name: Gather hosts by distro
+  hosts: all
+  connection: local
+  tasks:
+    - group_by:
+        key: "os_{{ ansible_distribution }}"
+
+- name: Setup MacOS roles
+  hosts: os_MacOSX
+  gather_facts: False
+  roles:
+      - common
+      - mac

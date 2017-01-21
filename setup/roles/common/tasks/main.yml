@@ -1,0 +1,48 @@
+---
+
+- name: Setup ctags
+  file:
+    src: "{{ root_dir }}/ctags/ctags"
+    dest: "{{ ansible_user_dir }}/.ctags"
+    state: link
+
+- name: Setup git
+  file:
+    src: "{{ root_dir}}/git/{{ item }}"
+    dest: "{{ ansible_user_dir }}/.{{ item }}"
+    state: link
+  with_items:
+    - git-prompt.sh
+    - gitconfig
+    - gitignore_global
+
+- name: Setup fish
+  file:
+    src: "{{ root_dir }}/fish"
+    dest: "{{ ansible_user_dir }}/.config/fish"
+    state: link
+
+- name: Setup nvim
+  file:
+    src: "{{ root_dir }}/nvim"
+    dest: "{{ ansible_user_dir }}/.config/nvim"
+    state: link
+
+- name: Setup sqlite
+  file:
+    src: "{{ root_dir }}/sqlite/sqliterc"
+    dest: "{{ ansible_user_dir }}/.sqliterc"
+    state: link
+
+- name: Setup vim folder
+  file:
+    src: "{{ root_dir }}/vim"
+    dest: "{{ ansible_user_dir }}/.vim"
+    state: link
+    force: yes
+
+- name: Setup vimrc
+  file:
+    src: "{{ root_dir }}/vim/vimrc"
+    dest: "{{ ansible_user_dir }}/.vimrc"
+    state: link
