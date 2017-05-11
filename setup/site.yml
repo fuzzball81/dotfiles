@@ -14,3 +14,9 @@
   roles:
       - common
       - mac
+
+- name: Setup Fedora roles
+  hosts: os_Fedora
+  gather_facts: False
+  roles:
+      - common
