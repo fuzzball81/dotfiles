@@ -12,12 +12,6 @@
     dest: "{{ ansible_user_dir }}/.bash_profile"
     state: link
 
-- name: Setup bash_aliases
-  file:
-    src: "{{ root_dir }}/bash/aliases"
-    dest: "{{ ansible_user_dir }}/.bash_aliases"
-    state: link
-
 - name: Setup tmux
   file:
     src: "{{ root_dir }}/tmux/conf_mac"
