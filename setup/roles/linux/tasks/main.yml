@@ -1,0 +1,19 @@
+---
+
+- name: Setup bashrc
+  file:
+    src: "{{ root_dir }}/bash/bashrc"
+    dest: "{{ ansible_user_dir }}/.bashrc"
+    state: link
+
+- name: Setup bash_profile
+  file:
+    src: "{{ root_dir }}/bash/profile"
+    dest: "{{ ansible_user_dir }}/.bash_profile"
+    state: link
+
+- name: Setup tmux
+  file:
+    src: "{{ root_dir }}/tmux/conf"
+    dest: "{{ ansible_user_dir }}/.tmux.conf"
+    state: link

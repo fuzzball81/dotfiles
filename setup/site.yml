@@ -12,11 +12,12 @@
   hosts: os_MacOSX
   gather_facts: False
   roles:
-      - common
-      - mac
+    - common
+    - mac
 
 - name: Setup Fedora roles
   hosts: os_Fedora
   gather_facts: False
   roles:
-      - common
+    - common
+    - linux
