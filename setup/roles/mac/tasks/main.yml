@@ -17,3 +17,9 @@
     src: "{{ root_dir }}/tmux/conf_mac"
     dest: "{{ ansible_user_dir }}/.tmux.conf"
     state: link
+
+- name: Adding fish function for docker X11 Fowarding
+  file:
+    src: "{{ root_dir }}/fish/functions/xfwd.fish"
+    dest: "{{ ansible_user_dir }}/.config/fish/functions/xfwd.fish"
+    state: link
