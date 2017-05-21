@@ -16,12 +16,6 @@
     - gitconfig
     - gitignore_global
 
-- name: Setup fish
-  file:
-    src: "{{ root_dir }}/fish"
-    dest: "{{ ansible_user_dir }}/.config/fish"
-    state: link
-
 - name: Setup nvim
   file:
     src: "{{ root_dir }}/nvim"
@@ -52,3 +46,5 @@
     src: "{{ root_dir }}/bash/aliases"
     dest: "{{ ansible_user_dir }}/.bash_aliases"
     state: link
+
+include: fish.yml
