@@ -5,6 +5,8 @@ switch (uname)
 
 	case Darwin
 		set -gx PATH $PATH {$HOME}/Library/Python/2.7/bin /usr/local/bin
+		eval (python -m virtualfish)
+		set -gx VIRTUALFISH_HOME {$HOME}/virtualenvs
 end
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish

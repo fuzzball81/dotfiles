@@ -27,6 +27,10 @@ function fish_prompt --description 'Write out the prompt'
 		set -g __fish_prompt_ip (get_ip_addr)
 	end
 
+	if set -q VIRTUAL_ENV
+	    echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
+	end
+
 	switch $USER
 		case root
 
@@ -51,4 +55,5 @@ function fish_prompt --description 'Write out the prompt'
 			echo $__fish_prompt_second
 			echo -n $__fish_prompt_third
 	end
+
 end
