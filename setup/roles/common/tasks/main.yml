@@ -47,4 +47,7 @@
     dest: "{{ ansible_user_dir }}/.bash_aliases"
     state: link
 
+- name: Installing Fonts
+  script: "{{ root_dir }}/fonts/install.sh"
+
 include: fish.yml
