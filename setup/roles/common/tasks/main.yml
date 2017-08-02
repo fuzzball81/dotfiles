@@ -50,4 +50,4 @@
 - name: Installing Fonts
   script: "{{ root_dir }}/fonts/install.sh"
 
-include: fish.yml
+- include: fish.yml
