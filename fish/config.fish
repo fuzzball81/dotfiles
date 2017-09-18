@@ -4,9 +4,9 @@ switch (uname)
 		set -gx PATH $PATH /usr/local/sbin
 
 	case Darwin
+		test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 		set -gx PATH $PATH {$HOME}/Library/Python/2.7/bin /usr/local/bin
-		eval (python -m virtualfish)
 		set -gx VIRTUALFISH_HOME {$HOME}/virtualenvs
 end
 
-test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+eval (python -m virtualfish auto_activation compat_aliases)
