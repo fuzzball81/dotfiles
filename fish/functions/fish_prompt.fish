@@ -55,5 +55,4 @@ function fish_prompt --description 'Write out the prompt'
 			echo $__fish_prompt_second
 			echo -n $__fish_prompt_third
 	end
-
 end
