@@ -16,6 +16,11 @@
 	lg = log -p
 	who = shortlog -s --
 	pr = pull --rebase
+	fp = format-patch
+	desc = describe
+	cp = cherry-pick
+	top = rev-parse --show-toplevel
+	logone = log --pretty=oneline
 
 [push]
 	default = simple
@@ -25,3 +30,5 @@
 	tool = bc3
 [mergetool "bc3"]
 	trustExitCode = true
+[pull]
+	rebase = true
