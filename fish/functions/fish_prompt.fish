@@ -2,12 +2,12 @@ function fish_prompt --description 'Write out the prompt'
 
 	# Just calculate these once, to save a few cycles when displaying the prompt
 	if not set -q __fish_prompt_normal
-		set -g __fish_prompt_cyan (set_color -o cyan)
-		set -g __fish_prompt_yellow (set_color -o yellow)
-		set -g __fish_prompt_magenta (set_color -o magenta)
-		set -g __fish_prompt_red (set_color -o red)
-		set -g __fish_prompt_blue (set_color -o blue)
-		set -g __fish_prompt_green (set_color -o green)
+		set -g __fish_prompt_cyan (set_color cyan)
+		set -g __fish_prompt_yellow (set_color yellow)
+		set -g __fish_prompt_magenta (set_color magenta)
+		set -g __fish_prompt_red (set_color red)
+		set -g __fish_prompt_blue (set_color blue)
+		set -g __fish_prompt_green (set_color green)
 		set -g __fish_prompt_normal (set_color normal)
 	end
 
