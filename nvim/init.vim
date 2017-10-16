@@ -1,8 +1,5 @@
 call plug#begin()
-Plug 'flazz/vim-colorschemes'
-Plug 'altercation/solarized'
-"Plug 'sickill/vim-monokai'
-"Plug 'tomasr/molokai'
+" Plug 'flazz/vim-colorschemes'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 "Plug 'scrooloose/syntastic'
@@ -11,19 +8,19 @@ Plug 'neomake/neomake'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'ervandew/supertab'
 Plug 'vim-scripts/OmniCppComplete'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
+Plug 'pearofducks/ansible-vim', { 'for': 'yaml' }
+Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 " Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-Plug 'zchee/deoplete-jedi'
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'tpope/vim-fugitive'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
 
+let g:python_host_prog = '/home/jjoyce/virtualenvs/neovim2/bin/python'
+let g:python3_host_prog = '/home/jjoyce/virtualenvs/neovim3/bin/python'
+
 filetype plugin indent on
-
-let g:python_host_prog = $HOME.'/virtualenvs/neovim2/bin/python'
-let g:python3_host_prog = $HOME.'/virtualenvs/neovim3/bin/python'
-
-call deoplete#enable()
 
 " set number
 let c_space_errors = 1
@@ -48,13 +45,13 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark = 'hard'
 
+
 set background=dark
 colorscheme gruvbox
 
-
 imap <F5> <C-o>:setlocal spell! spelllang=en_us<CR>
 
-map <F12> :call TrimWhiteSpace()<CR>
+map <F11> :call TrimWhiteSpace()<CR>
 " Removes trailing spaces
 func! TrimWhiteSpace()
   %s/\s*$//
@@ -78,6 +75,7 @@ au BufNewFile,BufRead SCons* set filetype=scons
 " OmniCppComplete Stuff
 set nocp
 filetype plugin on
+let g:deoplete#enable_at_startup = 1
 set ofu=syntaxcomplete#Complete
 au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
 let OmniCpp_ShowScopeInAbbr = 1
@@ -102,18 +100,18 @@ let g:neomake_python_enabled_makers = ['flake8']
 " end of file, E126(indent over 4 spaces)
 let g:neomake_python_flake8_maker = {'args' : ['--ignore=E501']}
 
-let g:syntastic_python_checkers=['flake8']
-let g:syntastic_python_flake8_args='--ignore=E501'
-
-let g:syntastic_check_on_open = 1
-let g:syntastic_enable_signs = 1
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_enable_highlighting = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_loc_list_height = 5
-let g:syntastic_cpp_check_header = 1
-let g:syntastic_cpp_auto_refresh_includes = 1
-let g:syntastic_cpp_compiler = 'g++'
+" let g:syntastic_python_checkers=['flake8']
+" let g:syntastic_python_flake8_args='--ignore=E501'
+" 
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_enable_signs = 1
+" let g:syntastic_error_symbol = '✗'
+" let g:syntastic_enable_highlighting = 1
+" let g:syntastic_auto_loc_list = 0
+" let g:syntastic_loc_list_height = 5
+" let g:syntastic_cpp_check_header = 1
+" let g:syntastic_cpp_auto_refresh_includes = 1
+" let g:syntastic_cpp_compiler = 'g++'
 "let g:syntastic_mode_map = { 'mode': 'active',
 "		\ 'active_filetypes': ['python', 'javascript', 'css', 'html'],
 "		\ 'passive_filetypes': ['make','cpp','c'] }
@@ -135,25 +133,26 @@ autocmd FileType *
     \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
     \ endif
 
-function! SetTabsToSpaces()
-  setlocal tabstop=4
-  setlocal softtabstop=4
-  setlocal shiftwidth=4
-  setlocal smarttab
-  setlocal expandtab
-:endfunction
+" function! SetTabsToSpaces()
+"   setlocal tabstop=4
+"   setlocal softtabstop=4
+"   setlocal shiftwidth=4
+"   setlocal smarttab
+"   setlocal expandtab
+" :endfunction
+" 
+" function! SetSpacesToTabs()
+"   setlocal tabstop=5
+"   setlocal softtabstop=5
+"   setlocal shiftwidth=5
+"   setlocal smarttab
+"   setlocal noexpandtab
+" :endfunction
+" 
+" map <silent> <F2> :call SetTabsToSpaces()<CR>
+" map <silent> <F3> :call SetSpacesToTabs()<CR>
 
-function! SetSpacesToTabs()
-  setlocal tabstop=5
-  setlocal softtabstop=5
-  setlocal shiftwidth=5
-  setlocal smarttab
-  setlocal noexpandtab
-:endfunction
-
-map <silent> <F2> :call SetTabsToSpaces()<CR>
-map <silent> <F3> :call SetSpacesToTabs()<CR>
-
+set colorcolumn=100
 set cursorline
 "hi cursorline gui=none ctermbg=none
 augroup CursorLineOnlyInActiveWindow
