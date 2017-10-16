@@ -55,7 +55,8 @@ if has('gui_running')
 	endif
 	colorscheme relaxedgreen
 else
-	colorscheme askapachecode
+	colorscheme solarized
+	" colorscheme askapachecode
 endif
 
 imap <F5> <C-o>:setlocal spell! spelllang=en_us<CR>
