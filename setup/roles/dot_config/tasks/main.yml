@@ -1,0 +1,25 @@
+---
+
+- name: Set config directory fact
+  set_fact:
+    root_dir: "{{ ansible_user_dir }}/.config/{{ app_name }}"
+    src_dir: "files/{{ app_name }}"
+
+- name: Create directory
+  file:
+     path: "{{ root_dir }}"
+     state: directory
+
+- name: Copy files
+  copy:
+    src: "{{ item }}"
+    dest: "{{ root_dir }}"
+  with_fileglob:
+    - "{{ src_dir }}/*"
+
+- name: Copy directories
+  copy:
+    src: "{{ src_dir }}/{{ item }}"
+    dest: "{{ root_dir }}"
+  loop: "{{ conf_dirs }}"
+
