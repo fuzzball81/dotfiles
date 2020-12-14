@@ -1,23 +1,18 @@
 ---
 
-# talk to all hosts just so we can learn about them
-- name: Gather hosts by distro
-  hosts: all
-  connection: local
+- hosts: localhost
+  roles:
+    - common
   tasks:
-    - group_by:
-        key: "os_{{ ansible_distribution }}"
+    - name: Include MacOS role
+      include_role:
+        name: mac
+      when:
+        "ansible_facts['distribution'] == 'MacOSX'"
 
-- name: Setup MacOS roles
-  hosts: os_MacOSX
-  gather_facts: False
-  roles:
-    - common
-    - mac
+    - name: Include Fedora role
+      include_role:
+        name: linux
+      when:
+        "ansible_facts['distribution'] == 'Fedora'"
 
-- name: Setup Fedora roles
-  hosts: os_Fedora
-  gather_facts: False
-  roles:
-    - common
-    - linux
