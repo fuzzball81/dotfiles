@@ -1,0 +1,41 @@
+---
+
+- name: Setup git
+  file:
+    src: "{{ root_dir}}/git/{{ item }}"
+    dest: "{{ ansible_user_dir }}/.{{ item }}"
+    state: link
+  loop:
+    - git-prompt.sh
+    - gitconfig
+    - gitignore_global
+
+- name: Setup sqlite
+  file:
+    src: "{{ root_dir }}/sqlite/sqliterc"
+    dest: "{{ ansible_user_dir }}/.sqliterc"
+    state: link
+
+- name: Setup vim folder
+  file:
+    src: "{{ root_dir }}/vim"
+    dest: "{{ ansible_user_dir }}/.vim"
+    state: link
+    force: yes
+
+- name: Setup vimrc
+  file:
+    src: "{{ root_dir }}/vim/vimrc"
+    dest: "{{ ansible_user_dir }}/.vimrc"
+    state: link
+
+- name: Setup bash_aliases
+  file:
+    src: "{{ root_dir }}/bash/aliases"
+    dest: "{{ ansible_user_dir }}/.bash_aliases"
+    state: link
+
+- name: Installing Fonts
+  script: "{{ root_dir }}/fonts/install.sh"
+
+- include: fish.yml
